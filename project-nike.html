@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nike — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="project-page">
+
+  <nav>
+    <div class="cam-lights">
+      <span class="cam-dot cam-dot--red"></span>
+      <span class="cam-dot cam-dot--amber"></span>
+    </div>
+    <ul class="nav-left">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Sobre</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo" aria-label="Home">
+      <img src="logo.png" alt="Logo">
+    </a>
+    <ul class="nav-right">
+      <li><a href="index.html#work">Portfólio</a></li>
+      <li><a href="index.html#contact">Contato</a></li>
+    </ul>
+  </nav>
+
+  <a href="index.html" class="project-back">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    <span>All Work</span>
+  </a>
+
+  <div class="project-layout">
+    <aside class="project-sidebar reveal">
+      <h1>Nike</h1>
+      <p class="meta-role">Role: Advertising &amp; Art Direction</p>
+      <p class="meta-desc">A short film on the DNA behind Brazil's 2026 World Cup jersey.</p>
+    </aside>
+    <div class="project-content">
+      <div class="project-media-wrap reveal" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+        <iframe
+          src="https://player.vimeo.com/video/1181133529?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0"
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <nav class="project-nav-bar">
+    <a href="project-fernando.html" class="proj-nav-link">
+      <span class="nav-direction">Previous Project</span>
+      <strong class="nav-title">Fernando</strong>
+    </a>
+    <a href="project-penha-maris.html" class="proj-nav-link is-next">
+      <span class="nav-direction">Next Project</span>
+      <strong class="nav-title">Penha Maris</strong>
+    </a>
+  </nav>
+
+  <footer>
+    <p class="footer-copy">© 2024 Art Direction Portfolio</p>
+    <ul class="footer-links">
+      <li><a href="mailto:hello@portfolio.com">Email</a></li>
+      <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(e => e.forEach(x => {
+      if (x.isIntersecting) { x.target.classList.add('in-view'); io.unobserve(x.target); }
+    }), { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+  </script>
+
+</body>
+</html>

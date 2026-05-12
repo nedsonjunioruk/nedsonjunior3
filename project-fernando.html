@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fernando — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── FULL VIEWPORT HERO ─────────────────────────────────────── */
+    .fv-hero {
+      display: grid;
+      grid-template-columns: 1fr 2fr 1fr;
+      grid-template-rows: 1fr auto;
+      height: calc(100vh - var(--nav-h));
+      padding: 0;
+      gap: 0;
+    }
+
+    /* Left column */
+    .fv-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 2rem 2rem 3rem;
+    }
+    .fv-left ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .fv-left ul li {
+      font-family: var(--f-body);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.01em;
+      line-height: 1.5;
+    }
+
+    /* Right column */
+    .fv-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+      padding: 2rem 3rem 2rem 2rem;
+      text-align: right;
+    }
+    .fv-right ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .fv-right ul li {
+      font-family: var(--f-body);
+      font-size: 0.78rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.01em;
+      line-height: 1.5;
+    }
+
+    /* Center video */
+    .fv-video {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+    .fv-video iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      border: 0;
+    }
+
+    /* Bottom controls bar */
+    .fv-controls {
+      grid-column: 1 / 4;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 3rem;
+      border-top: 1px solid var(--border);
+    }
+    .fv-title {
+      font-family: var(--f-display);
+      font-size: 1.1rem;
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+    .fv-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      color: rgba(255,255,255,0.6);
+      font-family: var(--f-body);
+      font-size: 0.62rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .fv-btn:hover { color: #fff; border-color: rgba(255,255,255,0.4); }
+    .fv-btn svg { width: 12px; height: 12px; stroke: currentColor; fill: none; stroke-width: 2; }
+
+    /* ── PHOTO GALLERY (below hero) ─────────────────────────────── */
+    .pg-full { line-height: 0; }
+    .pg-full img { width: 100%; height: auto; display: block; }
+
+    /* ── MOBILE ─────────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .fv-hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 45vw auto auto;
+        height: auto;
+      }
+      .fv-left  { padding: 1.5rem 1.5rem 0.5rem; }
+      .fv-video { grid-row: 2; height: 56vw; }
+      .fv-right { align-items: flex-start; text-align: left; padding: 0.5rem 1.5rem 1rem; }
+      .fv-controls { grid-column: 1; padding: 0.8rem 1.5rem; }
+    }
+  </style>
+</head>
+<body class="project-page">
+
+  <nav>
+    <div class="cam-lights">
+      <span class="cam-dot cam-dot--red"></span>
+      <span class="cam-dot cam-dot--amber"></span>
+    </div>
+    <ul class="nav-left">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#">Sobre</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo" aria-label="Home">
+      <img src="logo.png" alt="Logo">
+    </a>
+    <ul class="nav-right">
+      <li><a href="index.html#work">Portfólio</a></li>
+      <li><a href="index.html#contact">Contato</a></li>
+    </ul>
+  </nav>
+
+  <a href="index.html" class="project-back">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    <span>All Work</span>
+  </a>
+
+  <!-- FULL VIEWPORT HERO -->
+  <div class="fv-hero">
+
+    <!-- LEFT INFO -->
+    <div class="fv-left">
+      <ul>
+        <li>Concept development</li>
+        <li>Location scouting</li>
+        <li>Lighting direction</li>
+        <li>Portrait direction</li>
+        <li>Post-production</li>
+      </ul>
+    </div>
+
+    <!-- CENTER VIDEO -->
+    <div class="fv-video">
+      <iframe
+        id="vimeo-player"
+        src="https://player.vimeo.com/video/1181139972?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0&controls=0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <!-- RIGHT INFO -->
+    <div class="fv-right">
+      <ul>
+        <li>Client: Fernando</li>
+        <li>Photography</li>
+        <li>Art Direction</li>
+        <li>Editorial</li>
+        <li>2023</li>
+      </ul>
+    </div>
+
+    <!-- CONTROLS BAR -->
+    <div class="fv-controls">
+      <span class="fv-title">Fernando</span>
+      <button class="fv-btn" id="btn-sound">
+        <svg id="icon-sound" viewBox="0 0 24 24">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
+        <span id="sound-label">Sound off</span>
+      </button>
+    </div>
+
+  </div>
+
+  <!-- PHOTO GALLERY -->
+  <div class="project-layout" style="padding-top:2rem;">
+    <aside class="project-sidebar reveal">
+      <h1>Fernando</h1>
+      <p class="meta-role">Role: Editorial Direction</p>
+      <p class="meta-desc">A portrait series exploring identity through light and human presence.</p>
+    </aside>
+    <div class="project-content">
+      <div class="pg-full reveal">
+        <img src="Projeto Fernando/foto1.png" alt="Fernando 1">
+      </div>
+      <div class="pg-full reveal">
+        <img src="Projeto Fernando/foto9.png" alt="Fernando 2">
+      </div>
+      <div class="pg-full reveal">
+        <img src="Projeto Fernando/foto13.png" alt="Fernando 3">
+      </div>
+      <div class="pg-full reveal">
+        <img src="Projeto Fernando/foto17.png" alt="Fernando 4">
+      </div>
+      <div class="pg-full reveal">
+        <img src="Projeto Fernando/foto20.png" alt="Fernando 5">
+      </div>
+    </div>
+  </div>
+
+  <nav class="project-nav-bar">
+    <a href="project-christmas.html" class="proj-nav-link">
+      <span class="nav-direction">Previous Project</span>
+      <strong class="nav-title">Christmas</strong>
+    </a>
+    <a href="project-nike.html" class="proj-nav-link is-next">
+      <span class="nav-direction">Next Project</span>
+      <strong class="nav-title">Nike</strong>
+    </a>
+  </nav>
+
+  <footer>
+    <p class="footer-copy">© 2024 Art Direction Portfolio</p>
+    <ul class="footer-links">
+      <li><a href="mailto:hello@portfolio.com">Email</a></li>
+      <li><a href="#" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </footer>
+
+  <!-- Vimeo Player SDK -->
+  <script src="https://player.vimeo.com/api/player.js"></script>
+  <script>
+    /* IntersectionObserver for scroll reveal */
+    const io = new IntersectionObserver(e => e.forEach(x => {
+      if (x.isIntersecting) { x.target.classList.add('in-view'); io.unobserve(x.target); }
+    }), { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Vimeo SDK — sound toggle */
+    const player = new Vimeo.Player(document.getElementById('vimeo-player'));
+    const btn    = document.getElementById('btn-sound');
+    const label  = document.getElementById('sound-label');
+    const icon   = document.getElementById('icon-sound');
+
+    const iconMuted = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>`;
+    const iconOn    = `<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>`;
+
+    let muted = true;
+    btn.addEventListener('click', () => {
+      muted = !muted;
+      player.setMuted(muted);
+      icon.innerHTML = muted ? iconMuted : iconOn;
+      label.textContent = muted ? 'Sound off' : 'Sound on';
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell -Command \"node -v; npx -v; py -3 --version\")",
+      "Bash(for f:*)",
+      "Bash(do sed:*)",
+      "Bash(done)",
+      "WebFetch(domain:www.behance.net)",
+      "Bash(curl -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36\" \"https://mir-s3-cdn-cf.behance.net/projects/404/cd23c9196488985.Y3JvcCwyODE4LDIyMDQsOTAsMTYxOA.jpg\" -o \"C:/Users/nedso/AppData/Local/Temp/behance_cover.jpg\")",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" -H \"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8\" -H \"Accept-Language: en-US,en;q=0.5\" \"https://www.behance.net/gallery/196488985/Elian-Escalante-Curriculum-Vitae-Disenador-Grafico\")",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" -H \"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\" -H \"Accept-Language: en-US,en;q=0.5\" -H \"Cookie: ilo0=true\" \"https://www.behance.net/gallery/196488985/Elian-Escalante-Curriculum-Vitae-Disenador-Grafico\")",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" -H \"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\" -H \"Accept-Language: en-US,en;q=0.5\" -H \"Cookie: ilo0=true\" \"https://www.behance.net/gallery/109730485/Village-Negocios-Imobiliarios-Identidade-Visual\")",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" -H \"Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8\" -H \"Accept-Language: en-US,en;q=0.5\" -H \"Cookie: ilo0=true\" \"https://www.behance.net/gallery/246289511/Wine-Label-Design-Guliani\")",
+      "Bash(grep -oP '[^\\\\/]+\\\\.jpg$')",
+      "Bash(curl --version)",
+      "Bash(powershell -Command \"Get-Command Invoke-WebRequest\")",
+      "Bash(curl -s -L -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0.0.0 Safari/537.36\" \"https://www.behance.net/gallery/234002827/El-Faro-Resort-Brand-Identity\")",
+      "Bash(powershell -Command 'Add-Type -AssemblyName System.Drawing; $img = [System.Drawing.Image]::FromFile\\('\\\\''C:\\\\Users\\\\nedso\\\\OneDrive\\\\Documents\\\\Projetos VS Code\\\\Site Portfolio\\\\Projeto Penha Maris\\\\CAPA.gif'\\\\''\\); Write-Host \"$\\($img.Width\\) x $\\($img.Height\\) px\"; $img.Dispose\\(\\)')"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\nedso\\OneDrive\\Desktop"
+    ]
+  }
+}
