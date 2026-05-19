@@ -5,6 +5,178 @@
 /* ─── RESET ────────────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* ─── INTRO PANEL ───────────────────────────────────────────────────────────── */
+#intro-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background: #080808;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+#intro-panel.show { transform: translateY(0); }
+#intro-panel.hide { transform: translateY(-100%); }
+
+#intro-close {
+  position: absolute;
+  top: 2.2rem;
+  right: 2.5rem;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color 0.3s;
+  line-height: 0;
+}
+#intro-close:hover { color: #fff; }
+
+.intro-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 7rem;
+  max-width: 960px;
+  width: 100%;
+  padding: 0 4rem;
+  align-items: center;
+}
+
+.intro-photo {
+  overflow: hidden;
+}
+
+.intro-img {
+  width: 100%;
+  max-height: 72vh;
+  object-fit: cover;
+  object-position: center 15%;
+  display: block;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s var(--ease) 0.2s, transform 0.8s var(--ease) 0.2s;
+}
+
+#intro-panel.show .intro-img {
+  opacity: 1;
+  transform: none;
+}
+
+.intro-info {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s var(--ease) 0.35s, transform 0.8s var(--ease) 0.35s;
+}
+
+#intro-panel.show .intro-info {
+  opacity: 1;
+  transform: none;
+}
+
+.intro-name {
+  font-family: var(--f-display);
+  font-size: clamp(3.5rem, 6vw, 7.5rem);
+  font-weight: 300;
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.intro-role {
+  margin-top: 1.8rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.intro-bio {
+  margin-top: 2rem;
+  font-family: var(--f-body);
+  font-size: 0.88rem;
+  line-height: 1.85;
+  color: rgba(255,255,255,0.45);
+  max-width: 360px;
+}
+
+@media (max-width: 768px) {
+  .intro-layout {
+    grid-template-columns: 1fr;
+    gap: 2.5rem 0;
+    padding: 5rem 2rem 2rem;
+    align-items: start;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+  .intro-photo { max-height: 45vh; }
+  .intro-name  { font-size: clamp(3rem, 10vw, 5rem); }
+}
+
+/* ─── LOADER ─────────────────────────────────────────────────────────────────── */
+#loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+#loader.hide {
+  transform: translateY(-100%);
+}
+
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.loader-logo {
+  height: 110px;
+  width: auto;
+  display: block;
+  opacity: 0;
+  animation: loader-logo-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+@keyframes loader-logo-in {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+.loader-bar-track {
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  overflow: hidden;
+  /* largura definida por JS para igualar à logo */
+}
+
+.loader-bar {
+  height: 100%;
+  width: 0%;
+  background: #fff;
+  animation: loader-bar-fill 2.4s linear forwards;
+  animation-play-state: paused;
+}
+
+.loader-bar.running {
+  animation-play-state: running;
+}
+
+@keyframes loader-bar-fill {
+  from { width: 0%; }
+  to   { width: 100%; }
+}
+
 /* ─── VARIABLES ─────────────────────────────────────────────────────────────── */
 :root {
   --bg:      #000;
@@ -282,6 +454,86 @@ footer {
   transition: color 0.3s;
 }
 .footer-links a:hover { color: var(--text); }
+
+/* ─── HERO ───────────────────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 3rem 6rem;
+}
+
+.hero-name {
+  font-family: var(--f-display);
+  font-size: clamp(5rem, 14vw, 17rem);
+  font-weight: 300;
+  line-height: 0.88;
+  letter-spacing: -0.02em;
+  opacity: 0;
+  animation: hero-fade-up 1.2s var(--ease) 0.3s forwards;
+}
+
+.hero-role {
+  margin-top: 2rem;
+  font-size: clamp(0.62rem, 0.85vw, 0.78rem);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--muted);
+  opacity: 0;
+  animation: hero-fade-up 1s var(--ease) 0.7s forwards;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  opacity: 0;
+  animation: hero-fade-in 1s var(--ease) 1.2s forwards;
+}
+
+.hero-scroll span {
+  font-size: 0.58rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  writing-mode: vertical-rl;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 60px;
+  background: var(--muted);
+  transform-origin: top;
+  animation: hero-line 1.8s var(--ease) 1.6s infinite;
+}
+
+@keyframes hero-fade-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes hero-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes hero-line {
+  0%        { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  50%       { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  50.001%   { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100%      { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 0 1.5rem 5rem; }
+  .hero-scroll { right: 1.5rem; }
+}
 
 /* ─── SCROLL REVEAL ──────────────────────────────────────────────────────────── */
 .reveal {

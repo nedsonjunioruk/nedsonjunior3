@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nedson Junior — Resume</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F0EBE1;
+      --surface: #FFFDF8;
+      --accent: #C4622D;
+      --accent-dim: rgba(196,98,45,0.10);
+      --text: #1C1410;
+      --muted: #8C7B6B;
+      --border: #E0D6C8;
+      --sidebar-bg: #2D2520;
+      --sidebar-name: #F5ECD7;
+      --sidebar-muted: #A08C7A;
+      --sidebar-border: #3D332C;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      line-height: 1.5;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 20px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    /* ── PRINT BUTTON ── */
+    .print-bar {
+      width: 100%;
+      max-width: 860px;
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 16px;
+    }
+
+    .print-btn {
+      background: none;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 8px 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+    }
+
+    .print-btn:hover { background: var(--accent-dim); }
+
+    /* ── PAGE ── */
+    .page {
+      width: 100%;
+      max-width: 860px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 252px 1fr;
+      box-shadow: 0 4px 32px rgba(44,28,18,0.10);
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar {
+      background: var(--sidebar-bg);
+      padding: 28px 22px;
+      border-right: 1px solid var(--sidebar-border);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .sidebar-header { display: flex; flex-direction: column; gap: 6px; }
+
+    .sidebar-header .label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .sidebar-header .name {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      line-height: 1.2;
+      color: var(--sidebar-name);
+    }
+
+    .sidebar-header .role {
+      font-size: 11.5px;
+      color: var(--sidebar-muted);
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    .divider { height: 1px; background: var(--sidebar-border); }
+
+    .section-title {
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .contact-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+
+    .contact-list li { font-size: 11px; color: var(--sidebar-muted); word-break: break-all; }
+
+    .contact-list li a { color: var(--sidebar-muted); text-decoration: none; }
+    .contact-list li a:hover { color: var(--accent); }
+
+    .contact-list li .icon {
+      display: inline-block;
+      width: 14px;
+      margin-right: 6px;
+      color: var(--accent);
+      font-size: 11px;
+    }
+
+    .skill-list { display: flex; flex-direction: column; gap: 4px; }
+
+    .skill-item {
+      font-size: 11px;
+      color: var(--sidebar-name);
+      padding: 3px 8px;
+      background: rgba(196,98,45,0.15);
+      border-left: 2px solid var(--accent);
+    }
+
+    .tag-list { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    .tag {
+      font-size: 9.5px;
+      color: var(--sidebar-muted);
+      border: 1px solid var(--sidebar-border);
+      padding: 2px 6px;
+    }
+
+    .lang-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--sidebar-name);
+      margin-bottom: 4px;
+    }
+
+    .lang-item .level { font-size: 10px; color: var(--accent); font-weight: 600; }
+
+    /* ── QR CODE ── */
+    .qr-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .qr-wrap {
+      padding: 8px;
+      background: #F5ECD7;
+      width: fit-content;
+    }
+
+    .qr-scan-label {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 2px;
+    }
+
+    /* ── MAIN ── */
+    .main { padding: 28px 30px; display: flex; flex-direction: column; gap: 16px; }
+
+    .main-header { padding-bottom: 14px; border-bottom: 1px solid var(--border); padding-top: 16px; }
+    .section { border-bottom: 1px solid var(--border); padding-bottom: 14px; }
+    .section:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .main-header .eyebrow {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 5px;
+    }
+
+    .main-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .main-header .summary {
+      font-size: 11.5px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    .section > .section-title { margin-bottom: 10px; }
+
+    .experience-list { display: flex; flex-direction: column; gap: 14px; }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 3px;
+    }
+
+    .exp-company { font-size: 12.5px; font-weight: 600; color: var(--text); }
+
+    .exp-period {
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 500;
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+
+    .exp-role { font-size: 11px; color: var(--muted); margin-bottom: 4px; }
+
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 2px; }
+
+    .exp-bullets li {
+      font-size: 11px;
+      color: var(--muted);
+      padding-left: 13px;
+      position: relative;
+    }
+
+    .exp-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--accent); }
+
+    .edu-item { display: flex; justify-content: space-between; align-items: flex-start; }
+
+    .edu-degree { font-size: 12px; font-weight: 600; color: var(--text); }
+
+    .edu-school { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+    .edu-period {
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 500;
+      white-space: nowrap;
+      margin-left: 12px;
+    }
+
+    /* ── PRINT ── */
+    @page { size: A4; margin: 0; }
+    @media print {
+      body { background: #F0EBE1 !important; padding: 0; }
+      .print-bar { display: none; }
+      .page { border: none; box-shadow: none; width: 100%; max-width: 100%; }
+      .sidebar { background: #2D2520 !important; }
+    }
+
+    @media (max-width: 700px) {
+      .page { grid-template-columns: 1fr; }
+      .sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- PRINT BUTTON -->
+  <div class="print-bar">
+    <button class="print-btn" onclick="window.print()">
+      ↓ Save as PDF
+    </button>
+  </div>
+
+  <div class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- QR CODE no topo -->
+      <div class="qr-block" style="margin-top: 48px;">
+        <div class="qr-scan-label">Scan to see my art</div>
+        <div class="qr-wrap">
+          <div id="qrcode"></div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="section-title">Core Skills</div>
+        <div class="skill-list">
+          <div class="skill-item">Video Editing</div>
+          <div class="skill-item">Graphic Design</div>
+          <div class="skill-item">AI-Driven Content</div>
+          <div class="skill-item">Social Media Mgmt</div>
+          <div class="skill-item">Photography</div>
+          <div class="skill-item">Creative Writing</div>
+          <div class="skill-item">Color Grading</div>
+          <div class="skill-item">Sound Design</div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="section-title">Contact</div>
+        <ul class="contact-list">
+          <li><span class="icon">@</span>nedsonjunioruk@gmail.com</li>
+          <li><span class="icon">in</span><a href="https://www.linkedin.com/in/nedsonjunior-349bb63a3" target="_blank">linkedin.com/in/nedsonjunior</a></li>
+          <li><span class="icon">📷</span><a href="https://www.instagram.com/nedson_junior/" target="_blank">instagram.com/nedson_junior</a></li>
+          <li><span class="icon">📍</span>Greater London, UK<br/><span style="font-size:11px;margin-left:20px;">Open to relocation</span></li>
+        </ul>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="section-title">Tools</div>
+        <div class="tag-list">
+          <span class="tag">Premiere Pro</span>
+          <span class="tag">After Effects</span>
+          <span class="tag">DaVinci Resolve</span>
+          <span class="tag">CapCut</span>
+          <span class="tag">Photoshop</span>
+          <span class="tag">Lightroom</span>
+          <span class="tag">Midjourney</span>
+          <span class="tag">Highsfield</span>
+          <span class="tag">ChatGPT</span>
+          <span class="tag">Claude</span>
+          <span class="tag">Gemini</span>
+          <span class="tag">Illustrator</span>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <div class="section-title">Languages</div>
+        <div class="lang-item"><span>Portuguese</span><span class="level">Native</span></div>
+        <div class="lang-item"><span>English</span><span class="level">C1</span></div>
+        <div class="lang-item"><span>Spanish</span><span class="level">B1</span></div>
+      </div>
+
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+
+      <div class="main-header">
+        <div class="eyebrow">Content Creator · Video Editor · Social Media · AI-Driven Content</div>
+        <h1>Nedson Junior</h1>
+        <p class="summary">
+          Video editor and content creator with 5+ years of experience producing visual content for brands and social media platforms.
+          Specialized in short-form video, AI-driven workflows, and motion design — working with clients across gastronomy, sports, lifestyle, fashion, interior design, and hospitality.
+          Background in advertising and customer-facing roles brings a strategic perspective to every piece of content.
+        </p>
+      </div>
+
+      <!-- EXPERIENCE -->
+      <div class="section">
+        <div class="section-title">Experience</div>
+        <div class="experience-list">
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">Fiverr — Freelance Editor</span>
+              <span class="exp-period">Jan 2024 – Present</span>
+            </div>
+            <div class="exp-role">London, UK · Freelance</div>
+            <ul class="exp-bullets">
+              <li>Video editing for Instagram Reels and TikTok for international clients</li>
+              <li>AI-generated visuals for branding and marketing campaigns</li>
+              <li>Motion design and animations for digital content</li>
+              <li>Thumbnail design and visual optimization for engagement</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">The Thirsty Twist</span>
+              <span class="exp-period">Mar 2025 – Jan 2026</span>
+            </div>
+            <div class="exp-role">Social Media Manager · London, UK</div>
+            <ul class="exp-bullets">
+              <li>Photography and video capture at events</li>
+              <li>Image and video editing for social media and paid ads</li>
+              <li>AI content creation: posts, visuals, and short-form video</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">VIBE Fitness</span>
+              <span class="exp-period">Feb 2021 – Mar 2022</span>
+            </div>
+            <div class="exp-role">Social Media Manager · Salvador, Brazil</div>
+            <ul class="exp-bullets">
+              <li>Photography and video production for social media and ads</li>
+              <li>Marketing campaigns creation and community management</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-header">
+              <span class="exp-company">Atento — Itaú Medias</span>
+              <span class="exp-period">Dec 2020 – Feb 2022</span>
+            </div>
+            <div class="exp-role">Customer Relationship Analyst · Salvador, Brazil</div>
+            <ul class="exp-bullets">
+              <li>Social media customer support across Instagram, Facebook, and Twitter</li>
+              <li>Problem-solving and creative writing for client communications</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- EDUCATION -->
+      <div class="section">
+        <div class="section-title">Education & Certifications</div>
+
+        <div class="edu-item" style="margin-bottom:8px;">
+          <div>
+            <div class="edu-degree">Bachelor of Arts — Advertising</div>
+            <div class="edu-school">Universidade Salvador (UNIFACS)</div>
+          </div>
+          <span class="edu-period">2016 – 2020</span>
+        </div>
+
+        <div class="edu-item" style="margin-bottom:8px;">
+          <div>
+            <div class="edu-degree">The Science &amp; Implications of Generative AI</div>
+            <div class="edu-school">Harvard University</div>
+          </div>
+          <span class="edu-period">2026</span>
+        </div>
+
+        <div class="edu-item" style="margin-bottom:8px;">
+          <div>
+            <div class="edu-degree">Master AI with Google Gemini</div>
+            <div class="edu-school">Santander Academy</div>
+          </div>
+          <span class="edu-period">2026</span>
+        </div>
+
+        <div class="edu-item" style="margin-bottom:12px;">
+          <div>
+            <div class="edu-degree">Human Academy</div>
+            <div class="edu-school" style="margin-top:6px;">
+              <span class="tag" style="display:inline-block;margin:2px 3px 2px 0;">Video Creator Pro</span>
+              <span class="tag" style="display:inline-block;margin:2px 3px 2px 0;">Image Creator Pro</span>
+              <span class="tag" style="display:inline-block;margin:2px 3px 2px 0;">AI Animation</span>
+              <span class="tag" style="display:inline-block;margin:2px 3px 2px 0;">ChatGPT Pro</span>
+              <span class="tag" style="display:inline-block;margin:2px 3px 2px 0;">AI Google</span>
+            </div>
+          </div>
+          <span class="edu-period">2025 – 2026</span>
+        </div>
+
+        <div class="edu-item">
+          <div>
+            <div class="edu-degree">English Course — B2</div>
+            <div class="edu-school">CCAA</div>
+          </div>
+          <span class="edu-period">2009 – 2015</span>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script>
+    new QRCode(document.getElementById("qrcode"), {
+      text: "https://nedsonjuniorportfolio.vercel.app/",
+      width: 90,
+      height: 90,
+      colorDark: "#F5ECD7",
+      colorLight: "#2D2520",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+  </script>
+</body>
+</html>
