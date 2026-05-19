@@ -3,15 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Penha Maris — Portfolio</title>
+  <title>Olivia — Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  <style>
-    .pg-full { line-height: 0; }
-    .pg-full img { width: 100%; height: auto; display: block; }
-  </style>
 </head>
 <body class="project-page">
 
@@ -27,7 +23,7 @@
     <a href="index.html" class="nav-logo" aria-label="Home">
       <img src="logo.webp" alt="Logo">
     </a>
-        <ul class="nav-right">
+    <ul class="nav-right">
       <li><a href="index.html#work">Portfolio</a></li>
       <li><a href="index.html#contact">Contact</a></li>
     </ul>
@@ -40,61 +36,30 @@
 
   <div class="project-layout">
     <aside class="project-sidebar reveal">
-      <h1>Penha<br>Maris</h1>
-      <p class="meta-role">Role: Visual Identity</p>
-      <p class="meta-desc">Visual identity for a coastal luxury brand (2026).</p>
+      <h1>Olivia</h1>
+      <p class="meta-role">Role: Video Editing &amp; Social Media</p>
+      <p class="meta-desc">Content creation for Olivia — short-form video crafted for social media engagement.</p>
     </aside>
     <div class="project-content">
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/CAPA.gif?v=3" alt="Penha Maris Capa">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/CONTRACAPA.jpg" alt="Penha Maris Contracapa">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG1.jpg" alt="Penha Maris 1">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG2.jpg" alt="Penha Maris 2">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG3.jpg" alt="Penha Maris 3">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG4.jpg" alt="Penha Maris 4">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG5.png" alt="Penha Maris 5">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG6.png" alt="Penha Maris 6">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG7.png" alt="Penha Maris 7">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG8.png" alt="Penha Maris 8">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG9.png" alt="Penha Maris 9">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/IMG10.png" alt="Penha Maris 10">
-      </div>
-      <div class="pg-full reveal">
-        <img src="Projeto Penha Maris/rodape.png" alt="Penha Maris Rodapé">
+      <div class="reveal" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
+        <iframe
+          src="https://player.vimeo.com/video/1193752844?autoplay=1&muted=1&loop=1&title=0&byline=0&portrait=0"
+          style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
   </div>
 
   <nav class="project-nav-bar">
-    <a href="project-nike.html" class="proj-nav-link">
+    <a href="project-shaken-udder.html" class="proj-nav-link">
       <span class="nav-direction">Previous Project</span>
-      <strong class="nav-title">Nike</strong>
+      <strong class="nav-title">Shaken Udder</strong>
     </a>
-    <a href="project-red-merlot.html" class="proj-nav-link is-next">
+    <a href="project-nike.html" class="proj-nav-link is-next">
       <span class="nav-direction">Next Project</span>
-      <strong class="nav-title">Red Merlot</strong>
+      <strong class="nav-title">Nike</strong>
     </a>
   </nav>
 
@@ -107,6 +72,7 @@
     </ul>
   </footer>
 
+  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
     const io = new IntersectionObserver(e => e.forEach(x => {
       if (x.isIntersecting) { x.target.classList.add('in-view'); io.unobserve(x.target); }
@@ -116,5 +82,3 @@
 
 </body>
 </html>
-
-

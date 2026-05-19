@@ -14,13 +14,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: translateY(100%);
-  transition: transform 0.9s cubic-bezier(0.76, 0, 0.24, 1);
-  will-change: transform;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.9s cubic-bezier(0.76, 0, 0.24, 1);
 }
 
-#intro-panel.show { transform: translateY(0); }
-#intro-panel.hide { transform: translateY(-100%); }
+#intro-panel.show { opacity: 1; pointer-events: auto; }
+#intro-panel.hide { opacity: 0; pointer-events: none; }
 
 #intro-close {
   position: absolute;
@@ -79,7 +79,7 @@
 
 .intro-name {
   font-family: var(--f-display);
-  font-size: clamp(3.5rem, 6vw, 7.5rem);
+  font-size: clamp(2.2rem, 3.8vw, 4.5rem);
   font-weight: 300;
   line-height: 0.9;
   letter-spacing: -0.02em;
@@ -87,7 +87,7 @@
 }
 
 .intro-role {
-  margin-top: 1.8rem;
+  margin-top: 1rem;
   font-size: 0.68rem;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -95,12 +95,16 @@
 }
 
 .intro-bio {
-  margin-top: 2rem;
+  margin-top: 0.9rem;
   font-family: var(--f-body);
-  font-size: 0.88rem;
-  line-height: 1.85;
+  font-size: 0.82rem;
+  line-height: 1.7;
   color: rgba(255,255,255,0.45);
   max-width: 360px;
+}
+
+#bio-text {
+  transition: opacity 0.45s ease;
 }
 
 @media (max-width: 768px) {

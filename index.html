@@ -15,7 +15,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 54vw 46vw 46vw 48vw;
+      grid-template-rows: 54vw 46vw 46vw 46vw;
       gap: 0;
     }
 
@@ -47,8 +47,14 @@
     /* 5 — TTT: linha 3, 1/3 */
     .gallery-item:nth-child(5) { grid-column: 3; grid-row: 3; }
 
-    /* 6 — Fernando: linha 4, largura total */
-    .gallery-item:nth-child(6) { grid-column: 1 / 4; grid-row: 4; }
+    /* 6 — Fernando: col 1, linha 4 */
+    .gallery-item:nth-child(6) { grid-column: 1; grid-row: 4; }
+
+    /* 7 — Shaken Udder: col 2, linha 4 */
+    .gallery-item:nth-child(7) { grid-column: 2; grid-row: 4; }
+
+    /* 8 — Olivia: col 3, linha 4 */
+    .gallery-item:nth-child(8) { grid-column: 3; grid-row: 4; }
 
     /* ── MÍDIA ────────────────────────────────────────── */
     .gallery-media,
@@ -115,8 +121,7 @@
         grid-template-rows: auto;
       }
       .gallery-item:nth-child(n) { grid-column: auto; grid-row: auto; }
-      .gallery-item:nth-child(1),
-      .gallery-item:nth-child(6) { grid-column: 1 / 3; }
+      .gallery-item:nth-child(1) { grid-column: 1 / 3; }
       .gallery-overlay { opacity: 1; }
       .g-num, .g-title, .g-cat { transform: none; }
     }
@@ -154,7 +159,12 @@
       <div class="intro-info">
         <h2 class="intro-name">Nedson<br>Junior</h2>
         <p class="intro-role">Creative Director &nbsp;&middot;&nbsp; Visual Artist</p>
-        <p class="intro-bio">Sua descrição aqui. Conte brevemente quem você é, sua trajetória e o que te move criativamente.</p>
+        <div id="bio-text">
+          <p class="intro-bio">My relationship with art began before I could explain what art was. At 6 years old, I was already filling notebooks trying to recreate Manga characters I'd seen on TV. At 13, my first computer became a canvas, pixel by pixel, I built game characters in MS Paint. At 15, I discovered Photoshop, and that's when digital art and photography became something more than a hobby.</p>
+          <p class="intro-bio">At 18, still images weren't enough. I wanted movement, rhythm, emotion. I started learning video editing and from that moment, I never looked back. I've worked with everything from outdated legacy software to the most advanced tools available today.</p>
+          <p class="intro-bio">Now, at 30, living in London, I've added a new layer to my craft: AI. Not as a shortcut, but as an amplifier. With the right knowledge, AI doesn't replace creativity; it accelerates it, sharpens it, and makes consistent quality delivery possible at scale.</p>
+          <p class="intro-bio">I'm a versatile creative who speaks fluently across different niches, because great storytelling transcends industry.<br><em>Art is my foundation. Everything else is the medium.</em></p>
+        </div>
       </div>
     </div>
   </div>
@@ -166,14 +176,14 @@
       <span class="cam-dot cam-dot--amber"></span>
     </div>
     <ul class="nav-left">
-      <li><a href="#" id="nav-sobre">Sobre</a></li>
+      <li><a href="#" id="nav-about">About</a></li>
     </ul>
     <a href="index.html" class="nav-logo" aria-label="Home">
       <img src="logo.webp" alt="Logo">
     </a>
     <ul class="nav-right">
-      <li><a href="#work" class="active">Portfólio</a></li>
-      <li><a href="#contact">Contato</a></li>
+      <li><a href="#work" class="active">Portfolio</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -243,13 +253,33 @@
         </div>
       </a>
 
+      <!-- 9 — Shaken Udder -->
+      <a href="project-shaken-udder.html" class="gallery-item">
+        <img src="Shaken Udder.webp" alt="Shaken Udder" class="gallery-media" loading="lazy">
+        <div class="gallery-overlay">
+          <span class="g-num">Shaken Udder</span>
+          <h3 class="g-title">Shaken Udder</h3>
+          <p class="g-cat">Social Media</p>
+        </div>
+      </a>
+
+      <!-- 10 — Olivia -->
+      <a href="project-olivia.html" class="gallery-item">
+        <img src="OLIVIA.jpg" alt="Olivia" class="gallery-media" loading="lazy">
+        <div class="gallery-overlay">
+          <span class="g-num">Olivia</span>
+          <h3 class="g-title">Olivia</h3>
+          <p class="g-cat">Social Media</p>
+        </div>
+      </a>
+
     </div>
   </section>
 
   <!-- ─── CONTACT ──────────────────────────────────────────────────────────────── -->
   <section id="contact" class="contact-section">
     <div class="contact-left">
-      <p class="contact-headline">I'm always looking for more freelance work. What do you need?</p>
+      <p class="contact-headline">Have a vision? Let's connect and bring it to life ;)</p>
     </div>
     <div class="contact-right">
       <form class="contact-form" onsubmit="return false;">
@@ -312,7 +342,11 @@
         }, DURATION + HOLD);
       }
 
-      if (logo.complete && logo.naturalWidth > 0) {
+      if (location.hash === '#bio') {
+        history.replaceState(null, '', location.pathname);
+        loader.style.display = 'none';
+        requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add('show')));
+      } else if (logo.complete && logo.naturalWidth > 0) {
         start();
       } else {
         logo.addEventListener('load', start, { once: true });
@@ -329,9 +363,59 @@
 
       close.addEventListener('click', closePanel);
 
-      // Reabre o painel ao clicar em "Sobre" no nav
-      document.getElementById('nav-sobre').addEventListener('click', (e) => {
+      const bioText = document.getElementById('bio-text');
+      const bioEN = bioText.innerHTML;
+      const bioPT = `
+        <p class="intro-bio">Minha relação com a arte começou antes de eu conseguir explicar o que era arte. Aos 6 anos, já enchia cadernos tentando recriar personagens de Mangá que via na TV. Aos 13, meu primeiro computador virou uma tela — pixel por pixel, construía personagens de jogos no MS Paint. Aos 15, descobri o Photoshop, e foi aí que a arte digital e a fotografia se tornaram mais do que um hobby.</p>
+        <p class="intro-bio">Aos 18, imagens paradas já não bastavam. Eu queria movimento, ritmo, emoção. Comecei a aprender edição de vídeo e, desde então, nunca mais olhei para trás. Trabalhei com tudo: de softwares ultrapassados até as ferramentas mais avançadas disponíveis hoje.</p>
+        <p class="intro-bio">Agora, aos 30, morando em Londres, adicionei uma nova camada ao meu trabalho: IA. Não como atalho, mas como amplificador. Com o conhecimento certo, a IA não substitui a criatividade — ela acelera, afina e torna possível entregar qualidade consistente em escala.</p>
+        <p class="intro-bio">Sou um criativo versátil que fala com fluência em diferentes nichos, porque uma boa história transcende qualquer indústria.<br><em>A arte é a minha base. Todo o resto é o meio.</em></p>
+      `;
+
+      let scrollStep = 0;
+      let scrollLocked = false;
+
+      function handleScroll() {
+        if (!panel.classList.contains('show') || scrollLocked) return;
+
+        if (scrollStep === 0) {
+          scrollLocked = true;
+          bioText.style.opacity = '0';
+          setTimeout(() => {
+            bioText.innerHTML = bioPT;
+            bioText.style.opacity = '1';
+            scrollStep = 1;
+            scrollLocked = false;
+            window.addEventListener('scroll', handleScroll, { once: true });
+          }, 600);
+        } else {
+          closePanel();
+          scrollStep = 0;
+        }
+      }
+
+      function resetBio() {
+        bioText.innerHTML = bioEN;
+        bioText.style.opacity = '1';
+        scrollStep = 0;
+        scrollLocked = false;
+      }
+
+      function addScrollClose() {
+        window.addEventListener('scroll', handleScroll, { once: true });
+      }
+
+      // Ativa o fechar por scroll logo que o painel abre
+      // e.target === panel filtra bubbling das transições dos filhos
+      panel.addEventListener('transitionend', (e) => {
+        if (e.target !== panel) return;
+        if (panel.classList.contains('show')) addScrollClose();
+      });
+
+      // Reabre o painel ao clicar em "About" no nav
+      document.getElementById('nav-about').addEventListener('click', (e) => {
         e.preventDefault();
+        resetBio();
         panel.style.display = 'flex';
         panel.classList.remove('hide');
         requestAnimationFrame(() => {
