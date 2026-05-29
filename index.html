@@ -183,6 +183,7 @@
     </a>
     <ul class="nav-right">
       <li><a href="#work" class="active">Portfolio</a></li>
+      <li><a href="ned-photography.pdf" target="_blank">Photography</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
@@ -328,6 +329,8 @@
       const DURATION = 2400;
       const HOLD     = 400;
 
+      const alreadySeen = !!sessionStorage.getItem('bioShown');
+
       function start() {
         track.style.width = logo.offsetWidth + 'px';
         bar.classList.add('running');
@@ -336,15 +339,18 @@
           loader.classList.add('hide');
           loader.addEventListener('transitionend', () => {
             loader.style.display = 'none';
-            // Abre o painel de intro
+            sessionStorage.setItem('bioShown', 'true');
             panel.classList.add('show');
           }, { once: true });
         }, DURATION + HOLD);
       }
 
-      if (location.hash === '#bio') {
+      if (alreadySeen) {
+        loader.style.display = 'none';
+      } else if (location.hash === '#bio') {
         history.replaceState(null, '', location.pathname);
         loader.style.display = 'none';
+        sessionStorage.setItem('bioShown', 'true');
         requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add('show')));
       } else if (logo.complete && logo.naturalWidth > 0) {
         start();
