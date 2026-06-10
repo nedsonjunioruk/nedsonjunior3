@@ -11,17 +11,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:      #FDFCFA;
-      --bg:         #E8E4DE;
-      --black:      #0C0B09;
-      --warm-gray:  #4A4542;
-      --light-gray: #8A837C;
+      --cream:      #e8e8e8;
+      --bg:         #000;
+      --black:      #111;
+      --text:       #e8e8e8;
+      --warm-gray:  #aaa;
+      --light-gray: #777;
       --accent:     #B8A890;
-      --border:     #E0DAD2;
+      --border:     rgba(255,255,255,0.1);
     }
 
     .photo-body {
-      background: var(--bg);
+      background: #000;
       font-family: 'Inter', sans-serif;
       display: flex;
       flex-direction: column;
@@ -40,8 +41,8 @@
 
     .print-btn {
       background: transparent;
-      border: 1px solid var(--black);
-      color: var(--black);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--text);
       font-family: 'Inter', sans-serif;
       font-size: 9px;
       font-weight: 600;
@@ -51,13 +52,13 @@
       cursor: pointer;
       transition: background 0.2s, color 0.2s;
     }
-    .print-btn:hover { background: var(--black); color: var(--cream); }
+    .print-btn:hover { background: rgba(255,255,255,0.1); color: var(--cream); }
 
     /* ── A4 PAGE ── */
     .page {
       width: 210mm;
       height: 297mm;
-      background: var(--cream);
+      background: #111;
       overflow: hidden;
       position: relative;
       flex-shrink: 0;
@@ -67,7 +68,7 @@
        PAGE 1 — EDITORIAL COVER
     ════════════════════════════════ */
     .editorial-cover {
-      background: #ffffff;
+      background: #111;
       display: flex;
       flex-direction: column;
     }
@@ -77,7 +78,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-bottom: 1px solid #D8D4CE;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       flex-shrink: 0;
     }
 
@@ -86,7 +87,7 @@
       font-weight: 600;
       letter-spacing: 9px;
       text-transform: uppercase;
-      color: var(--black);
+      color: var(--text);
     }
 
     .ec-main {
@@ -107,7 +108,7 @@
     .ec-word-bottom {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 160px;
-      color: var(--black);
+      color: var(--text);
       line-height: 0.88;
       letter-spacing: 3px;
     }
@@ -136,7 +137,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 36px;
-      border-top: 1px solid #D8D4CE;
+      border-top: 1px solid rgba(255,255,255,0.1);
       flex-shrink: 0;
     }
 
@@ -153,14 +154,14 @@
       font-weight: 600;
       letter-spacing: 3.5px;
       text-transform: uppercase;
-      color: var(--black);
+      color: var(--text);
     }
 
     /* ════════════════════════════════
        PAGE 2 — INDEX
     ════════════════════════════════ */
     .index-page {
-      background: #ffffff;
+      background: #111;
       display: flex;
       flex-direction: column;
       padding: 52px 44px 48px;
@@ -171,7 +172,7 @@
       align-items: baseline;
       justify-content: space-between;
       padding-bottom: 22px;
-      border-bottom: 1px solid #D8D4CE;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
       flex-shrink: 0;
     }
 
@@ -222,7 +223,7 @@
     .idx-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 32px;
-      color: var(--black);
+      color: var(--text);
       text-transform: uppercase;
       line-height: 1.05;
       flex: 1;
@@ -250,7 +251,7 @@
       flex-direction: column;
       padding: 40px;
       gap: 16px;
-      background: var(--cream);
+      background: #111;
     }
 
     .client-header {
@@ -273,14 +274,14 @@
       font-size: 9px;
       font-weight: 500;
       letter-spacing: 1px;
-      color: var(--black);
+      color: var(--text);
     }
 
     .client-name-text {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 17px;
       text-transform: uppercase;
-      color: var(--black);
+      color: var(--text);
       line-height: 1;
     }
 
@@ -312,7 +313,7 @@
        CLIENTS PAGE
     ════════════════════════════════ */
     .clients-page {
-      background: #ffffff;
+      background: #111;
       display: flex;
       flex-direction: column;
       padding: 52px 48px 48px;
@@ -329,7 +330,7 @@
     .clients-page .pg-title {
       font-family: 'Bebas Neue', sans-serif;
       font-size: 54px;
-      color: var(--black);
+      color: var(--text);
       letter-spacing: 4px;
       text-transform: uppercase;
       line-height: 1;
