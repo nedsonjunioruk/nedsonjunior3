@@ -420,13 +420,13 @@
         }, DURATION + HOLD);
       }
 
-      if (alreadySeen) {
-        loader.style.display = 'none';
-      } else if (location.hash === '#bio') {
+      if (location.hash === '#bio') {
         history.replaceState(null, '', location.pathname);
         loader.style.display = 'none';
         sessionStorage.setItem('bioShown', 'true');
         requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add('show')));
+      } else if (alreadySeen) {
+        loader.style.display = 'none';
       } else if (logo.complete && logo.naturalWidth > 0) {
         start();
       } else {
