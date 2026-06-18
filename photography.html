@@ -600,6 +600,21 @@
       .page { page-break-after: always; }
       .page:last-of-type { page-break-after: auto; }
     }
+
+    /* ── MOBILE ── */
+    @media screen and (max-width: 820px) {
+      .photo-body {
+        padding-left: 0;
+        padding-right: 0;
+        gap: 10px;
+        overflow-x: hidden;
+      }
+      .print-bar {
+        width: 100%;
+        padding: 0 16px;
+        box-sizing: border-box;
+      }
+    }
   </style>
 </head>
 <body class="project-page">
@@ -832,6 +847,29 @@
 
   </div><!-- end .photo-body -->
 
+  <script>
+    function scalePagesToViewport() {
+      const A4_W = 794; // 210mm at 96dpi
+      const vw = window.innerWidth;
+      const scale = Math.min(1, vw / A4_W);
+
+      document.querySelectorAll('.page').forEach(function(page) {
+        if (scale < 1) {
+          const h = page.offsetHeight;
+          page.style.transformOrigin = 'top center';
+          page.style.transform = 'scale(' + scale + ')';
+          page.style.marginBottom = '-' + (h * (1 - scale)) + 'px';
+        } else {
+          page.style.transform = '';
+          page.style.marginBottom = '';
+        }
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', scalePagesToViewport);
+    window.addEventListener('load', scalePagesToViewport);
+    window.addEventListener('resize', scalePagesToViewport);
+  </script>
 
 </body>
 </html>
