@@ -303,7 +303,7 @@
         <div class="gallery-overlay">
           <span class="g-num">Shaken Udder</span>
           <h3 class="g-title">Shaken Udder</h3>
-          <p class="g-cat">Social Media</p>
+          <p class="g-cat">Spec Commercial</p>
         </div>
       </a>
 
@@ -359,24 +359,30 @@
       <p class="contact-headline">Have a vision? Let's connect and bring it to life ;)</p>
     </div>
     <div class="contact-right">
-      <form class="contact-form" onsubmit="return false;">
+      <form class="contact-form" id="contact-form" action="https://formsubmit.co/nedsonjunioruk@gmail.com" method="POST">
+
+        <input type="hidden" name="_subject" value="New message from your portfolio">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
         <div class="cf-field">
           <label class="cf-label">Who are you?</label>
-          <input class="cf-input" type="text" placeholder="It's me…">
+          <input class="cf-input" type="text" name="name" placeholder="It's me…" required>
         </div>
 
         <div class="cf-field">
           <label class="cf-label">What's your email?</label>
-          <input class="cf-input" type="email" placeholder="My email is…">
+          <input class="cf-input" type="email" name="email" placeholder="My email is…" required>
         </div>
 
         <div class="cf-field">
           <label class="cf-label">Now that we're acquainted, how can I help you?</label>
-          <input class="cf-input" type="text" placeholder="I'd love to work with you on…">
+          <input class="cf-input" type="text" name="message" placeholder="I'd love to work with you on…" required>
         </div>
 
         <button class="cf-btn" type="submit">Send Away</button>
+        <p class="cf-status" aria-live="polite"></p>
 
       </form>
     </div>
@@ -386,7 +392,7 @@
   <footer>
     <p class="footer-copy">© 2026 Nedson Junior</p>
     <ul class="footer-links">
-      <li><a href="mailto:hello@portfolio.com">Email</a></li>
+      <li><a href="mailto:nedsonjunioruk@gmail.com">Email</a></li>
       <li><a href="https://www.instagram.com/nedson_junior/" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="https://www.linkedin.com/in/nedson-junior-349bb63a3" target="_blank" rel="noopener">LinkedIn</a></li>
     </ul>
@@ -518,6 +524,38 @@
       });
     }, { threshold: 0.04 });
     items.forEach((el) => io.observe(el));
+
+    /* Contact form submission via FormSubmit AJAX */
+    (function () {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      const status = form.querySelector('.cf-status');
+      const btn = form.querySelector('.cf-btn');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        btn.disabled = true;
+        status.textContent = 'Sending...';
+
+        fetch('https://formsubmit.co/ajax/nedsonjunioruk@gmail.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: new FormData(form)
+        })
+          .then((res) => { if (!res.ok) throw new Error('Request failed'); return res.json(); })
+          .then((data) => {
+            if (!data || (data.success !== true && data.success !== 'true')) {
+              throw new Error((data && data.message) || 'Submission not confirmed');
+            }
+            status.textContent = "Message sent. I'll get back to you soon.";
+            form.reset();
+          })
+          .catch(() => {
+            status.textContent = 'Something went wrong. Email me directly at nedsonjunioruk@gmail.com.';
+          })
+          .finally(() => { btn.disabled = false; });
+      });
+    })();
   </script>
 
 </body>

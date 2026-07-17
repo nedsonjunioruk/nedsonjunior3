@@ -418,6 +418,15 @@ nav {
 }
 
 .cf-btn:hover { opacity: 0.75; }
+.cf-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.cf-status {
+  font-family: var(--f-body);
+  font-size: 0.8rem;
+  color: rgba(240,245,245,0.75);
+  min-height: 1.2em;
+  margin-top: -1.6rem;
+}
 
 @media (max-width: 900px) {
   .contact-section {
