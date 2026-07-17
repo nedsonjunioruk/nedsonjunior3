@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="style.css">
   <style>
     .frames-section {
-      max-width: 1100px;
+      max-width: 900px;
       margin: 80px auto 0;
       padding: 0 40px;
     }
@@ -24,8 +24,8 @@
     }
     .frames-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6px;
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
     .frame-item {
       overflow: hidden;
@@ -40,6 +40,8 @@
     .frames-grid.in-view .frame-item:nth-child(5)  { opacity: 1; transform: none; transition-delay: 400ms; }
     .frames-grid.in-view .frame-item:nth-child(6)  { opacity: 1; transform: none; transition-delay: 500ms; }
     .frames-grid.in-view .frame-item:nth-child(7)  { opacity: 1; transform: none; transition-delay: 600ms; }
+    .frames-grid.in-view .frame-item:nth-child(8)  { opacity: 1; transform: none; transition-delay: 700ms; }
+    .frames-grid.in-view .frame-item:nth-child(9)  { opacity: 1; transform: none; transition-delay: 800ms; }
     .frame-item img {
       width: 100%;
       height: 100%;
@@ -49,7 +51,6 @@
     }
     .frame-item:hover img { transform: scale(1.03); }
     @media (max-width: 600px) {
-      .frames-grid { grid-template-columns: 1fr; }
       .frames-section { padding: 0 20px; }
     }
   </style>
@@ -83,7 +84,7 @@
     <aside class="project-sidebar reveal">
       <h1>Cubana</h1>
       <p class="meta-role">Role: Photography, Script &amp; Video Editing</p>
-      <p class="meta-desc">A brand film for Cubana, produced in partnership with Hennessy to promote Bad Bunny's London tour. The project started with on-location photography at Cubana's Lower Marsh Market venue, capturing the restaurant's Cuban-rooted energy, then grew into a full campaign shoot for the partnership. Every image — from the restaurant photography to the campaign visuals — was scripted and edited into a single brand film, bringing Cubana's atmosphere and Hennessy's premium positioning together for the tour's London activation.</p>
+      <p class="meta-desc">A brand film for Cubana, produced in partnership with Hennessy to promote Bad Bunny's London tour. The project started with on-location photography at Cubana's Lower Marsh Market venue, capturing the restaurant energy, then grew into a full campaign shoot for the partnership. Every image, from the restaurant photography to the campaign visuals, was scripted and edited into a single brand film, bringing Cubana's atmosphere and Hennessy's premium positioning together for the tour's London activation.</p>
     </aside>
     <div class="project-content">
       <div class="project-media-wrap reveal" style="position:relative; padding-bottom:56.25%; height:0; overflow:hidden;">
@@ -107,6 +108,8 @@
       <div class="frame-item"><img src="Cubana/cubana_5.webp" alt="Cubana x Hennessy campaign visual — 2"></div>
       <div class="frame-item"><img src="Cubana/cubana_6.webp" alt="Cubana x Hennessy campaign visual — 3"></div>
       <div class="frame-item"><img src="Cubana/cubana_7.webp" alt="Cubana x Hennessy campaign visual — 4"></div>
+      <div class="frame-item"><img src="Cubana/cubana_8.webp" alt="Bad Bunny 'Debí Tirar Más Fotos' campaign set styling"></div>
+      <div class="frame-item"><img src="Cubana/cubana_9.webp" alt="Cubana still life — tropical fruit and cocktail styling"></div>
     </div>
   </section>
 
