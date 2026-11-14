@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cubana × Havana Club - Portfolio</title>
+  <meta name="description" content="A cinematic farewell manifesto for Cubana, Waterloo, closing its partnership with Havana Club. Real photos and footage of the venue rebuilt into a 35mm documentary film." />
+  <link rel="canonical" href="https://nedsonjunior3.vercel.app/project-cubana-havana.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Cubana × Havana Club - Portfolio" />
+  <meta property="og:description" content="A cinematic farewell manifesto for Cubana, Waterloo, closing its partnership with Havana Club." />
+  <meta property="og:url" content="https://nedsonjunior3.vercel.app/project-cubana-havana.html" />
+  <meta property="og:image" content="https://nedsonjunior3.vercel.app/og/cubana-havana.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Cubana × Havana Club - Portfolio" />
+  <meta name="twitter:description" content="A cinematic farewell manifesto for Cubana, Waterloo, closing its partnership with Havana Club." />
+  <meta name="twitter:image" content="https://nedsonjunior3.vercel.app/og/cubana-havana.jpg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .frames-section {
+      max-width: 900px;
+      margin: 80px auto 0;
+      padding: 0 40px;
+    }
+    .frames-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 12px;
+    }
+    .frames-intro {
+      font-size: 14px;
+      line-height: 1.7;
+      color: #888;
+      max-width: 620px;
+      margin-bottom: 32px;
+    }
+    .frames-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .frame-item {
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+    .frames-grid.in-view .frame-item { opacity: 1; transform: none; }
+    .frames-grid.in-view .frame-item:nth-child(2) { transition-delay: 100ms; }
+    .frames-grid.in-view .frame-item:nth-child(3) { transition-delay: 200ms; }
+    .frames-grid.in-view .frame-item:nth-child(4) { transition-delay: 300ms; }
+    .frames-grid.in-view .frame-item:nth-child(5) { transition-delay: 400ms; }
+    .frame-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .frame-item:hover img { transform: scale(1.03); }
+
+    .meta-desc + .meta-desc { margin-top: 14px; }
+
+    /* Film player */
+    .film-wrap {
+      position: relative;
+      aspect-ratio: 2206 / 946;
+      background: #000;
+      overflow: hidden;
+    }
+    .film-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .film-play {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      border: 0;
+      background: rgba(0,0,0,0.18);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      transition: background 0.3s ease;
+    }
+    .film-play:hover { background: rgba(0,0,0,0.32); }
+    .film-play svg {
+      width: 64px;
+      height: 64px;
+      padding: 20px 18px 20px 22px;
+      border: 1px solid rgba(255,255,255,0.7);
+      border-radius: 50%;
+      fill: #fff;
+      box-sizing: border-box;
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .film-play:hover svg { transform: scale(1.08); border-color: #fff; }
+    .film-play span {
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+    }
+    .film-wrap.is-playing .film-play { display: none; }
+    @media (max-width: 600px) {
+      .film-play svg { width: 52px; height: 52px; padding: 16px 14px 16px 18px; }
+    }
+
+    /* Real photo → film frame */
+    .pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .pair figure { margin: 0; overflow: hidden; }
+    .pair img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      display: block;
+    }
+    .pair figcaption {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #555;
+      margin-top: 10px;
+    }
+    @media (max-width: 600px) {
+      .frames-section { padding: 0 20px; }
+      .pair { gap: 6px; }
+      .pair figcaption { font-size: 9px; letter-spacing: 2px; }
+    }
+  </style>
+</head>
+<body class="project-page">
+
+  <nav>
+    <div class="cam-lights">
+      <span class="cam-dot cam-dot--red"></span>
+      <span class="cam-dot cam-dot--amber"></span>
+    </div>
+    <ul class="nav-left">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="index.html#bio">About</a></li>
+    </ul>
+    <a href="index.html" class="nav-logo" aria-label="Home">
+      <img src="logo.webp" alt="Logo">
+    </a>
+    <ul class="nav-right">
+      <li><a href="index.html#work">Portfolio</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <a href="index.html" class="project-back">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    <span>All Work</span>
+  </a>
+
+  <div class="project-layout">
+    <aside class="project-sidebar reveal">
+      <h1>Cubana × Havana Club</h1>
+      <p class="meta-role">Role: Creative Direction, Script, AI Film Production &amp; Editing</p>
+      <p class="meta-desc">A cinematic manifesto for Cubana, the Cuban restaurant on Lower Marsh, Waterloo, marking the end of its partnership with Havana Club. Narrated by Bea Rangel, it is a thank-you letter to a summer of mojitos, music and dancing, and to the people who turned Cubana into <em>casa</em>.</p>
+      <p class="meta-desc">Every scene starts from a real photograph or real footage of the venue and its people. Each frame was rebuilt with AI in a 35mm documentary look, keeping the real faces, places and brands intact, then animated using the original footage as the motion reference. The edit was finished with film grain, a location tag and bilingual subtitles.</p>
+    </aside>
+    <div class="project-content">
+      <div class="project-media-wrap reveal film-wrap">
+        <video id="film" class="film-video" preload="none" playsinline
+               poster="Cubana%20Havana/film-poster.webp">
+          <source src="Cubana%20Havana/cubana-havana-film.mp4" type="video/mp4">
+        </video>
+        <button class="film-play" id="film-play" aria-label="Play film">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="8 5 19 12 8 19"/></svg>
+          <span>Play film</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <section class="frames-section">
+    <p class="frames-label">From real photo to film</p>
+    <p class="frames-intro">The film was built on what really happened at Cubana. Each shot began as a photo taken on the day, then became a cinematic frame with the same people and the same place.</p>
+    <div class="frames-grid">
+      <div class="frame-item pair">
+        <figure><img src="Cubana Havana/real-toast.webp" alt="Real photo: friends toasting with Havana Club mojitos at Cubana" loading="lazy"><figcaption>Real photo</figcaption></figure>
+        <figure><img src="Cubana Havana/film-toast.webp" alt="Film frame: the same friends toasting, cinematic version" loading="lazy"><figcaption>Film frame</figcaption></figure>
+      </div>
+      <div class="frame-item pair">
+        <figure><img src="Cubana Havana/real-cups.webp" alt="Real photo: two Havana Club cups on a table at Cubana" loading="lazy"><figcaption>Real photo</figcaption></figure>
+        <figure><img src="Cubana Havana/film-cups.webp" alt="Film frame: a couple raising Havana Club cups to camera" loading="lazy"><figcaption>Film frame</figcaption></figure>
+      </div>
+      <div class="frame-item pair">
+        <figure><img src="Cubana Havana/real-dad.webp" alt="Real photo: a father holding his baby daughter at Cubana" loading="lazy"><figcaption>Real photo</figcaption></figure>
+        <figure><img src="Cubana Havana/film-dad.webp" alt="Film frame: father and baby under festoon lights" loading="lazy"><figcaption>Film frame</figcaption></figure>
+      </div>
+      <div class="frame-item pair">
+        <figure><img src="Cubana Havana/real-laptop.webp" alt="Real photo: Cubana team member working at the bar" loading="lazy"><figcaption>Real photo</figcaption></figure>
+        <figure><img src="Cubana Havana/film-laptop.webp" alt="Film frame: the same team member, cinematic version" loading="lazy"><figcaption>Film frame</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="frames-section">
+    <p class="frames-label">Frames</p>
+    <div class="frames-grid">
+      <div class="frame-item"><img src="Cubana Havana/film-bar.webp" alt="Bartender pouring Havana Club rum at Cubana" loading="lazy"></div>
+      <div class="frame-item"><img src="Cubana Havana/film-dance.webp" alt="Outdoor salsa class on Lower Marsh" loading="lazy"></div>
+      <div class="frame-item"><img src="Cubana Havana/film-friends.webp" alt="Friends laughing with drinks inside Cubana" loading="lazy"></div>
+      <div class="frame-item"><img src="Cubana Havana/film-night.webp" alt="Cubana mural at night, closing shot" loading="lazy"></div>
+    </div>
+  </section>
+
+  <nav class="project-nav-bar">
+    <a href="project-cubana.html" class="proj-nav-link">
+      <span class="nav-direction">Previous Project</span>
+      <strong class="nav-title">Cubana</strong>
+    </a>
+    <a href="project-nike.html" class="proj-nav-link is-next">
+      <span class="nav-direction">Next Project</span>
+      <strong class="nav-title">Nike</strong>
+    </a>
+  </nav>
+
+  <footer>
+    <p class="footer-copy">© 2026 Nedson Junior</p>
+    <ul class="footer-links">
+      <li><a href="mailto:nedsonjunioruk@gmail.com">Email</a></li>
+      <li><a href="https://www.instagram.com/nedson_junior/" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="https://www.linkedin.com/in/nedson-junior-349bb63a3" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver(e => e.forEach(x => {
+      if (x.isIntersecting) { x.target.classList.add('in-view'); io.unobserve(x.target); }
+    }), { threshold: 0.08 });
+    document.querySelectorAll('.reveal, .frames-grid').forEach(el => io.observe(el));
+
+    // Film: poster + play button; loads the video only on click
+    const film = document.getElementById('film');
+    document.getElementById('film-play').addEventListener('click', () => {
+      film.closest('.film-wrap').classList.add('is-playing');
+      film.controls = true;
+      film.play();
+    });
+  </script>
+
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>

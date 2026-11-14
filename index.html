@@ -32,7 +32,7 @@
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: 54vw 46vw 46vw 46vw;
+      grid-template-rows: 54vw 46vw 46vw 46vw 46vw;
       gap: 0;
     }
 
@@ -72,6 +72,9 @@
 
     /* 8 — Cubana: col 3, linha 4 */
     .gallery-item:nth-child(8) { grid-column: 3; grid-row: 4; }
+
+    /* 9 — Cubana × Havana Club: linha 5, largura total */
+    .gallery-item:nth-child(9) { grid-column: 1 / 4; grid-row: 5; }
 
     /* ── MÍDIA ────────────────────────────────────────── */
     .gallery-media,
@@ -330,6 +333,16 @@
           <span class="g-num">Cubana</span>
           <h3 class="g-title">Cubana</h3>
           <p class="g-cat">Brand Film</p>
+        </div>
+      </a>
+
+      <!-- 11 — Cubana × Havana Club: largura total -->
+      <a href="project-cubana-havana.html" class="gallery-item">
+        <img src="Cubana Havana/havana-cover.webp" alt="Friends toasting with Havana Club mojitos at Cubana, Lower Marsh, London" class="gallery-media" loading="lazy">
+        <div class="gallery-overlay">
+          <span class="g-num">Cubana × Havana Club</span>
+          <h3 class="g-title">Cubana × Havana Club</h3>
+          <p class="g-cat">Cinematic Manifesto</p>
         </div>
       </a>
 

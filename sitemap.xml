@@ -41,6 +41,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://nedsonjunior3.vercel.app/project-cubana-havana.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://nedsonjunior3.vercel.app/project-ttt.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
